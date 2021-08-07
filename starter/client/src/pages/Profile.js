@@ -40,7 +40,7 @@ const Profile = props => {
         {!isLoaded ? (
             <div>Loading...</div>
           ) : (
-          <ThoughtList thoughts={thoughts} title={`${userParam}'s thoughts...`} />
+          <ThoughtList thoughts={thoughts} title= {`${userParam}'s thoughts...`} />
           )}
         </div>
       </div>
