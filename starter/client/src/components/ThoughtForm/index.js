@@ -70,7 +70,7 @@ const ThoughtForm = () => {
           className="form-input col-12 "
           onChange={handleChange}
         ></textarea>
-        <label className="form-input col-12  p-1">
+   <label className="form-input col-12  p-1">
   Add an image to your thought: 
   <input
     type="file"
