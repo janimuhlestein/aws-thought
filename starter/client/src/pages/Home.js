@@ -1,3 +1,4 @@
+// eslint-disable-next-line jsx-a11y/href-no-hash
 import React, { useState, useEffect } from 'react';
 import ThoughtList from '../components/ThoughtList';
 import ThoughtForm from '../components/ThoughtForm';
@@ -5,6 +6,20 @@ import ThoughtForm from '../components/ThoughtForm';
 const Home = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [thoughts, setThoughts] = useState([]);
+  useEffect(() => {
+    const fetchData = async() => {
+      try {
+        const res = await fetch('/api/users');
+        const jsonData = await res.json();
+        const _data = jsonData.sort((a,b)=>(a.createdAt<b.createdAt) ? 1: -1);
+        setThoughts([..._data]);
+        setIsLoaded(true);
+      } catch(error) {
+        console.log(error);
+      }
+    }
+    fetchData();
+  }, [thoughts]);
 
   return (
     <main>

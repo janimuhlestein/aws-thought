@@ -11,6 +11,22 @@ const Profile = props => {
     thought: '',
   }]);
 
+  useEffect(() => {
+    const fetchData = async() => {
+      try {
+        const res = await fetch(`/api/users/${userParam}`);
+        const data = await res.json();
+        console.log(data);
+        setThoughts([...data]);
+        setIsLoaded(true);
+      } catch(error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, [userParam]);
+
+
   return (
     <div>
       <div className="flex-row mb-3">
@@ -24,7 +40,7 @@ const Profile = props => {
         {!isLoaded ? (
             <div>Loading...</div>
           ) : (
-          <ThoughtList thoughts={thoughts} title={`${userParam}'s thoughts...`} />
+          <ThoughtList thoughts={thoughts} title= {`${userParam}'s thoughts...`} />
           )}
         </div>
       </div>
