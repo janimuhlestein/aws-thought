@@ -1,8 +1,7 @@
 const { DynamoDB } = require('aws-sdk');
 const AWS = require('aws-sdk');
 AWS.config.update({
-    region: "us-west-1",
-    endpoint: "http://localhost:8000"
+    region: "us-west-1"
 });
 
 //create the DynamoDB service object
